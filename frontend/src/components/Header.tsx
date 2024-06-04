@@ -10,7 +10,7 @@ const Header = () => {
     <div className="bg-blue-400 py-6">
 
             <div className="container mx-auto  flex justify-between">
-                       <span className='text-white text-3xl  font-bold'><Link to='/'>Home Stay</Link></span>
+                       <span className='text-white text-3xl  font-bold'><Link to='/'>Summer Holidays</Link></span>
                        <span className='flex space-x-2 '>
                         {isLoggedIn?(<>
                         <Link to='/my-bookings' className='flex items-center px-3 rounded-md font-bold text-white hover:bg-black'>My Bookings</Link>

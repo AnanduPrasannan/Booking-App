@@ -4,19 +4,21 @@ import * as apiClient from '../api-clients'
 import { useAppContext } from "../contexts/Appcontext"
 import { Link, useNavigate } from "react-router-dom"
 
+export type RegisteredFormData={
+
+    firstName:string,
+    lastName:string,
+    email:string,
+    password:string,
+    confirmPassword:string
+} 
+
 const Register = () => {
     const navigate=useNavigate()
     const queryClient=useQueryClient()
     const {showToast}=useAppContext()
 
-   type RegisteredFormData={
-
-        firstName:string,
-        lastName:string,
-        email:string,
-        password:string,
-        confirmPassword:string
-    }
+  
 
     const {register,watch,handleSubmit,formState:{errors}}=useForm<RegisteredFormData>()
 
@@ -24,7 +26,7 @@ const Register = () => {
 
         onSuccess:async ()=>{
            showToast({message:"registration success",type:"SUCCESS"})
-           await queryClient.invalidateQueries('validateToken')
+          await queryClient.invalidateQueries('validateToken')
            navigate('/')
         },
         onError:(error:Error)=>{
@@ -32,13 +34,13 @@ const Register = () => {
         }
     })
 
-let onsubmit=handleSubmit((data)=>{
+let onSubmit=handleSubmit((data)=>{
     mutation.mutate(data)
 })
   return (
 
     <> 
-   <form action="" className="flex flex-col gap-5" onSubmit={onsubmit}>
+   <form action="" className="flex flex-col gap-5" onSubmit={onSubmit}>
     <h2 className="text-3xl font-bold">Create Account</h2>
     <div className="flex flex-col md:flex-row gap-5">
         <label htmlFor="" className="text-black font-bold text-sm ">

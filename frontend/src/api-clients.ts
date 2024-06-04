@@ -1,15 +1,9 @@
+import { RegisteredFormData } from "./pages/Register"
 import { SignInFormData } from "./pages/SignIn"
 
 
 const API_BASE_URL=import.meta.env.VITE_API_BASE_URL
-type RegisteredFormData={
 
-    firstName:string,
-    lastName:string,
-    email:string,
-    password:string,
-    confirmPassword:string
-}
 
 export const register=async (formData:RegisteredFormData)=>{
 
@@ -17,7 +11,7 @@ export const register=async (formData:RegisteredFormData)=>{
         method:'POST',
         credentials:"include",
         headers:{
-            'content-type':"application/json",
+            "Content-type":"application/json",
 
         },
         body:JSON.stringify(formData)
@@ -39,7 +33,7 @@ const response=await fetch(`${API_BASE_URL}/api/auth/login`,{
     method:'POST',
     credentials:'include',
     headers:{
-        'Content-type':'application/json',
+        "Content-type":"application/json",
 
     },
     body:JSON.stringify(formData)
@@ -55,10 +49,12 @@ const body=await response.json()
     }
 
     export const validateToken= async ()=>{
-        const response=await fetch(`${API_BASE_URL}/api/auth/validate-token`,{credentials:"include"})
-
+        const response=await fetch(`${API_BASE_URL}/api/auth/validate-token`,{credentials:"include"})        
+            console.log(response);
+            
         if(!response.ok){
             throw new Error("token invalid")
+        
         }
       
         return response.json()
@@ -76,4 +72,23 @@ const body=await response.json()
         if(!response.ok){
             throw new Error("Something went wrong during signout")
         }
+    }
+
+
+    export const addMyHotel=async(hotelFormData:FormData)=>{
+
+        const response=await fetch(`${API_BASE_URL}/api/my-hotels`,{
+            credentials:"include",
+            method:"POST",
+            
+            
+            body:hotelFormData // actually it is hotelFormData
+
+
+        })
+
+        if(!response.ok){
+            throw new Error ('Failed to add hotel')
+        }
+        return  response.json()
     }
