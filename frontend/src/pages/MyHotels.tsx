@@ -13,7 +13,7 @@ const MyHotels = () => {
         },
 
         onError:async ()=>{
-            showToast({message:"Got some problems",type:'ERROR'})
+            showToast({message:"Got some problems in viewing hotels",type:'ERROR'})
         }
     })
     if(!hotelData){

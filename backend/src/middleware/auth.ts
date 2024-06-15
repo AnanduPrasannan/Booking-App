@@ -15,7 +15,7 @@ const verifyToken=(req:Request,res:Response,next:NextFunction)=>{
 
     if(!token){
 
-        res.status(401).json({message:"Unauthorized access"})
+       return res.status(401).json({message:"Unauthorized access"})   // I added return here on 14/6/24
     }
 
     try{
@@ -24,7 +24,7 @@ const verifyToken=(req:Request,res:Response,next:NextFunction)=>{
         next()
     }
     catch(err){
-        res.status(401).json({message:"Unauthorized access"})
+      return  res.status(401).json({message:"Unauthorized access"})               // I added return here on 14/6/24
         
 
     }
