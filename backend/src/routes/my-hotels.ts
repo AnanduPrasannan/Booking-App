@@ -117,7 +117,7 @@ router.put('/:hotelId',verifyToken,upload.array('imageFiles'),async (req:Request
         if(!hotel){
          return   res.status(404).json({message:"HOtel not found"})
         }
-
+ 
        // dealing with file uploads
 
        const files=req.files as Express.Multer.File[]
