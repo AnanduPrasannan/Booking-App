@@ -15,9 +15,9 @@ try{
     })
 
     const results=hotels.map((hotel)=>{
-        const userBookings=hotel.bookings.filter((booking)=>{
+        const userBookings=hotel.bookings.filter((booking)=>
             booking.userId===req.userId
-        })
+        )
         const hotelWithUserBookings:HotelType={
             ...hotel.toObject(),
             bookings:userBookings

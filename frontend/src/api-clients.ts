@@ -194,7 +194,7 @@ const body=await response.json()
             queryParams.append('types',type)
         })
         searchParams.stars?.forEach((star)=>{
-            queryParams.append('star',star)
+            queryParams.append('stars',star)
         })
         const response=await fetch(`${API_BASE_URL}/api/hotels/search?${queryParams}`)
 

@@ -31,7 +31,7 @@ router.get('/search',async (req:Request,res:Response)=>{
                     sortOptions ={pricePerNight:1}
                     break
                 case "pricePerNightDesc":
-                    sortOptions ={starRating:-1}
+                    sortOptions ={pricePerNight:-1}
                     break
             }
 
@@ -245,7 +245,7 @@ const constructSearchQuery=(queryParams:any)=>{
             const starRatings=Array.isArray(queryParams.stars) ?
             queryParams.stars.map((star:string)=>
             parseInt(star)
-            ) : queryParams.star
+            ) : parseInt(queryParams.stars)
 
             constructedQuery.starRating={$in:starRatings}
     }
